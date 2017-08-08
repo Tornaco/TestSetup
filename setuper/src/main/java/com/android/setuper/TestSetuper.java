@@ -32,6 +32,10 @@ public abstract class TestSetuper {
         Assert.assertTrue(res == null || !res.contains("Err"));
     }
 
+    public static void grantAllDeclearedPermissions() throws IOException {
+        grantAllDeclearedPermissions(InstrumentationRegistry.getTargetContext().getPackageName());
+    }
+
     public static void grantAllDeclearedPermissions(String packageName) throws IOException {
         String[] permissions = getPkgInfo(InstrumentationRegistry.getTargetContext(), packageName).requestedPermissions;
         permissions = extractUnGranted(InstrumentationRegistry.getTargetContext(), packageName, permissions);
