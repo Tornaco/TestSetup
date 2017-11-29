@@ -39,6 +39,7 @@ public abstract class TestSetuper {
     public static void grantAllDeclearedPermissions(String packageName) throws IOException {
         String[] permissions = getPkgInfo(InstrumentationRegistry.getTargetContext(), packageName).requestedPermissions;
         permissions = extractUnGranted(InstrumentationRegistry.getTargetContext(), packageName, permissions);
+        if (permissions == null) return;
         for (String p : permissions) {
             grantPermissions(packageName, p);
         }
